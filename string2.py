@@ -4,7 +4,8 @@ Kenzie assignment: String2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Mike Boring"
+# used for reference - https://www.geeksforgeeks.org/python-split-given-string-into-equal-halves/
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -23,8 +24,15 @@ __author__ = "???"
 
 
 def verbing(s):
-    # your code here
-    return
+    new_s = ''
+    if len(s) >= 3:
+        if s.endswith('ing'):
+            new_s = s + 'ly'
+        else:
+            new_s = s + 'ing'
+    else:
+        new_s = s
+    return new_s
 
 
 # E. not_bad
@@ -37,8 +45,16 @@ def verbing(s):
 
 
 def not_bad(s):
-    # your code here
-    return
+    if 'not' in s and 'bad' in s:
+        index_not = s.index('not')
+        index_bad = s.index('bad')
+        if index_bad > index_not:
+            s = s.replace(s[index_not:index_bad+3], 'good')
+        else:
+            s = s
+    else:
+        s = s
+    return s
 
 
 # F. front_back
@@ -52,8 +68,18 @@ def not_bad(s):
 
 
 def front_back(a, b):
-    # your code here
-    return
+
+    a_front = a[0:len(a)//2 if len(a) % 2 == 0 else ((len(a)//2)+1):]
+    b_front = b[0:len(b)//2 if len(b) % 2 == 0 else ((len(b)//2)+1):]
+    if len(a) % 2 == 0:
+        a_back = a[len(a)//2:]
+    else:
+        a_back = a[(len(a)//2)+1:]
+    if len(b) % 2 == 0:
+        b_back = b[len(b)//2:]
+    else:
+        b_back = b[(len(b)//2)+1:]
+    return a_front + b_front + a_back + b_back
 
 
 # Provided simple test() function used in main() to print
